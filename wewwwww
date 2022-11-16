@@ -1,1 +1,154 @@
-print("Hello world")
+getgenv().SecureMode = true
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "Frost GUI",
+	LoadingTitle = "Frost hub (WIP)",
+	LoadingSubtitle = "by Koby",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, 
+		FileName = "Frost Hub"
+	},
+        Discord = {
+        	Enabled = false,
+        	Invite = "Koby",
+        	RememberJoins = true
+        },
+	KeySystem = true,
+	KeySettings = {
+		Title = "FROST HUB",
+		Subtitle = "Key System",
+		Note = "Join the discord (https://discord.gg/KeqTPtyy)",
+		FileName = "KobyKey",
+		SaveKey = true,
+		GrabKeyFromSite = false,
+		Key = "FROSTHUB#1"
+	}
+})
+
+Rayfield:Notify({
+    Title = "FrostGUI",
+    Content = "https://discord.gg/KeqTPtyy",
+    Duration = 6.5,
+    Image = 4483362458,
+    Actions = { -- Notification Buttons
+        Ignore = {
+            Name = "Okay!",
+            Callback = function()
+                print("The user tapped Okay!")
+            end
+		},
+	},
+})
+
+local Tab = Window:CreateTab("Main", 4483362458)
+local Section = Tab:CreateSection("")
+
+local Label = Tab:CreateLabel("(Work in progress)")
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Reach",
+	CurrentValue = false,
+	Flag = "Toggle1",
+	Callback = function(Value)
+		-- The function that takes place when the toggle is pressed
+    		-- The variable (Value) is a boolean on whether the toggle is true or false
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Aimbot",
+	CurrentValue = false,
+	Flag = "Toggle2",
+	Callback = function(Value)
+		-- The function that takes place when the toggle is pressed
+    		-- The variable (Value) is a boolean on whether the toggle is true or false
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "AutoGaurd/Defend",
+	CurrentValue = false,
+	Flag = "Toggle3",
+	Callback = function(Value)
+		-- The function that takes place when the toggle is pressed
+    		-- The variable (Value) is a boolean on whether the toggle is true or false
+	end,
+})
+
+
+
+local Keybind = Tab:CreateKeybind({
+	Name = "TP to BasketBall",
+	CurrentKeybind = "V",
+	HoldToInteract = false,
+	Flag = "Keybind1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Keybind)
+		-- The function that takes place when the keybind is pressed
+    		-- The variable (Keybind) is a boolean for whether the keybind is being held or not (HoldToInteract needs to be true)
+	end,
+})
+
+local Tab = Window:CreateTab("LocalPlayer", 4483362458)
+local Section = Tab:CreateSection("")
+
+local Label = Tab:CreateLabel("(Work in progress)")
+
+local Slider = Tab:CreateSlider({
+	Name = "WalkSpeed",
+	Range = {0, 100},
+	Increment = 1,
+	Suffix = "Speed",
+	CurrentValue = 0,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		-- The function that takes place when the slider changes
+    		-- The variable (Value) is a number which correlates to the value the slider is currently at
+	end,
+})
+
+local Slider = Tab:CreateSlider({
+	Name = "JumpPower",
+	Range = {0, 100},
+	Increment = 1,
+	Suffix = "Hops",
+	CurrentValue = 0,
+	Flag = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		-- The function that takes place when the slider changes
+    		-- The variable (Value) is a number which correlates to the value the slider is currently at
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Fly",
+	CurrentValue = false,
+	Flag = "Toggle3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		-- The function that takes place when the toggle is pressed
+    		-- The variable (Value) is a boolean on whether the toggle is true or false
+	end,
+})
+
+
+local Tab = Window:CreateTab("Others", 4483362458)
+
+local Section = Tab:CreateSection("")
+
+local Label = Tab:CreateLabel(" (Shift to open and close)")
+
+local Keybind = Tab:CreateKeybind({
+	Name = "Destroy GUI",
+	CurrentKeybind = "P",
+	HoldToInteract = false,
+	Flag = "Keybind2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Keybind)
+		Rayfield:Destroy() -- The function that takes place when the keybind is pressed
+    		-- The variable (Keybind) is a boolean for whether the keybind is being held or not (HoldToInteract needs to be true)
+	end,
+})
+
+
+Rayfield:LoadConfiguration()
